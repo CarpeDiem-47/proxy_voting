@@ -11,6 +11,15 @@
 |
 */
 
+use App\Teacher;
+
 Route::get('/', function () {
-    return view('welcome');
+    $teachers = Teacher::orderBy('name','asc')->get();
+    return view('voting', ['teachers'=>$teachers]);
 });
+
+Route::post('/vote', function (Request $request){
+    //TODO
+});
+
+
