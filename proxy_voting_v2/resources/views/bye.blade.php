@@ -1,15 +1,16 @@
+
 @extends('layouts.master')
 
 @section('caption')
-    Your answers:
+    Thank you very much!
 @endsection
 @section('title')
-    <!--Enter to make your choice!-->
+    Your vote has been recorded :)
 @endsection
 @section('subtitle')
-    Make sure it is correct and hit submit! :) 
     <!--2017-->
+    See you at the P-Certificate ceremony!
     <!--The winner is to be announced at the P-Certificate ceremony-->
 @endsection
 
-@include('func.f_overview')
+@include('func.f_bye')

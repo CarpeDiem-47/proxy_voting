@@ -53,6 +53,10 @@ class VoteController extends Controller {
       $qual_nr = $qual->getCurrentQualNr($request);
       $vote->q_id = $qual_nr;
 
+      // to save the tacher data for easier access
+      $teacher = Teacher::find($vote->t_id);
+      echo $teacher;
+
       $votes = $ses->retrieveValue($request,'vote_records');
       if($votes !== null){
         // do not allow doublicates
@@ -60,16 +64,16 @@ class VoteController extends Controller {
         // to do!
         if($votes[$qual_nr-1]==null)
         {
-          array_push($votes,$vote); // add value to the array of votes
+          array_push($votes,['vote'=>$vote,'teacher'=>$teacher]); // add value to the array of votes
         }else{
-          $votes[$qual_nr-1] = $vote;
+          $votes[$qual_nr-1] = ['vote'=>$vote,'teacher'=>$teacher];
         }
       }else{
         $votes = array(); 
         array_push($votes,$vote);
       }
       $ses->putValue($request, 'vote_records',$votes);
-      
+      // print_r($ses->retrieveValue($request,'vote_records')) ;
       // saved the data to session - continue further
       return redirect('/next');
      
@@ -78,11 +82,32 @@ class VoteController extends Controller {
   /**
    * Store a newly created resource in storage.
    *
+   * @param Request $request
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
     echo "in proress of storing response";
+    $ses = new SessionController;
+    
+    $votes = $ses->retrieveValue($request,'vote_records');
+    //print_r($votes);
+
+    if(count($votes)>0){
+      foreach($votes as $v)
+      {
+        //echo '...saving: '.$v['vote'];
+        $v['vote']->save();
+      }
+      // save student data also
+      $stud = $ses->retrieveValue($request,'student_record');
+      // echo ($stud);
+      $stud->save();
+      return redirect('/thanks'); 
+    }else{
+      return view('/mistake',['mist'=>'You have not voted...']);
+    }
+ 
   }
 
   /**

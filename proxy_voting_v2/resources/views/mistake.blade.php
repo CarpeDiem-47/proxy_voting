@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('caption')
-    Your answers:
+    Oh la!
 @endsection
 @section('title')
-    <!--Enter to make your choice!-->
+    {{$mistake}}
 @endsection
 @section('subtitle')
-    Make sure it is correct and hit submit! :) 
+    We will make sure everything is correct now, start again: <a href="/">here</a> :)
     <!--2017-->
     <!--The winner is to be announced at the P-Certificate ceremony-->
 @endsection

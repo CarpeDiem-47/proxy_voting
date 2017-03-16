@@ -17,10 +17,10 @@ class VotingController extends Controller
     public function start(Request $request)
     {
         $this->validate($request, [
-            'student_number' => 'required|unique:students,studentNr|max:7|min:7',
-            'student_email' => 'required|email',
+            'student_number' => 'required|unique:votes,s_nr|unique:students,studentNr|max:7|min:7',
+            'student_email' => 'required|unique:students,studentEmail|email|',
         ]); // does implicitly redirect back if fails
-
+        // add the regex to check fontys email
         // TODO: check studnr validity
 
         // setting request session variables
@@ -62,7 +62,10 @@ class VotingController extends Controller
             $qualification = Qualification::find($old_nr);
             $quals = $ses->retrieveValue($request,'qual_records');
             if($quals !== null){
-                array_push($quals,$qualification); // add value to the array of votes
+                if(!isset($quals[$old_nr])){
+                    array_push($quals,$qualification);    
+                }
+                // add value to the array of votes
             }else{
                 $quals = array(); 
                 array_push($quals,$qualification);
@@ -85,6 +88,11 @@ class VotingController extends Controller
         // echo $stud;
         // print_r($votes);
 
-        return view('overview',['student' => $stud, 'votes'=>$votes,'quals'=>$quals]);
+        if(isset($stud,$votes,$quals)){
+            return view('overview',['student' => $stud, 'votes'=>$votes,'quals'=>$quals]);
+        }else{
+            return view('mistake', ['mist'=>'we have have a mistake']);
+        }
+
     }
 }

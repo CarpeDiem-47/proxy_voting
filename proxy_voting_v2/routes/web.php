@@ -34,3 +34,7 @@ Route::post('/record',['uses'=>'VoteController@create']);
 Route::get('/finish',['uses'=>'VotingController@finish']);
 
 Route::post('/submit',['uses'=>'VoteController@store']);
+
+Route::get('/thanks', function(){
+    return view('bye');
+});
