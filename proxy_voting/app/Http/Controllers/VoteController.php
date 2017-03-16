@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Vote;
+
 class VoteController extends Controller {
 
   /**
@@ -27,12 +31,30 @@ class VoteController extends Controller {
   /**
    * Store a newly created resource in storage.
    *
+   * @param Request $request
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
     
+    $this->validate($request, [
+        'student_number' => 'required|unique:votes,studentNr|max:7|min:7',
+        'student_email' => 'required|email',
+    ]); // does implicit redirect back if fails
+
+    // if continues - creates a new vote
+
+    $vote = new Vote;
+    $vote->t_id = 101;
+    $vote->studentNr = $request->student_number;
+    $vote->studentEmail = $request->student_email;
+
+    $vote->save();
+
+    // return back?
+    return redirect('/');
   }
+  
 
   /**
    * Display the specified resource.

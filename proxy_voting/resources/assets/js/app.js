@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -18,3 +17,11 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+
+// $(document).ready(function() {
+//     var radios = $
+//     alert($("input[name=teachers]:checked").map(function() {
+//         return this.value;
+//     }).get().join(","));
+// });

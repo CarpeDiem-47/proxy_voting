@@ -12,14 +12,16 @@
 */
 
 use App\Teacher;
+// use Illuminate\Http\Request;
+// use App\Http\Requests;
+// use Illuminate\Http\Request;
 
 Route::get('/', function () {
     $teachers = Teacher::orderBy('name','asc')->get();
     return view('voting', ['teachers'=>$teachers]);
 });
 
-Route::post('/vote', function (Request $request){
-    //TODO
-});
+Route::post('/newvote', ['uses' => 'VoteController@store']);
+
 
 
