@@ -36,4 +36,12 @@ class SessionController extends Controller
    public function getAll(Request $request){
        return $request->session()->all();
    }
+
+   public function refresh(Request $request){
+       $this->deleteKey($request,'student_record');
+       $this->deleteKey($request,'vote_records');
+       $this->deleteKey($request,'qual_nr');
+       $this->deleteKey($request,'qual_records');
+       $this->deleteKey($request,'fin');
+   }
 }

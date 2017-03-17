@@ -92,10 +92,16 @@ class DatabaseSeeder extends Seeder
             ]);
         }
         
-        // to be updates
+        // to be updated
+        DB::table('qualifications')->insert([
+                'title' => 'Best Teacher 2017',
+                'description' => 'Who do you find the best teacher of this year?',
+            ]);
+        // to be updated
         DB::table('qualifications')->insert([
                 'title' => 'FHICTster 2017',
                 'description' => 'Choose the coolest teacher of the year!',
             ]);
+        
     }
 }

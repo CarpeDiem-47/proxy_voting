@@ -13,7 +13,7 @@
 <div class="mdl-typography--text-center"> 
 {!! Form::open(['url' => '/submit']) !!}
 <!--delete this span once done-->
-    <span class="mdl-color-text--pink-A400">Building in progress...</span>
+    <!--<span class="mdl-color-text--pink-A400">Building in progress...</span>-->
 <!-- this one above needs to go -->
     <br/>
     <h5>Your Info:</h5>

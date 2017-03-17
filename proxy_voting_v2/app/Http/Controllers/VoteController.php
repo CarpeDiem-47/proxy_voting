@@ -55,27 +55,30 @@ class VoteController extends Controller {
 
       // to save the tacher data for easier access
       $teacher = Teacher::find($vote->t_id);
-      echo $teacher;
+      // echo $teacher;
+      $qualif = Qualification::find($vote->q_id);
+      // echo $qualif;
 
       $votes = $ses->retrieveValue($request,'vote_records');
       if($votes !== null){
         // do not allow doublicates
         // do override in such cases
         // to do!
-        if($votes[$qual_nr-1]==null)
-        {
+        if(count($votes)<$qual_nr)
+        { // if the number of votes is smaller - add new, else replace
           array_push($votes,['vote'=>$vote,'teacher'=>$teacher]); // add value to the array of votes
         }else{
           $votes[$qual_nr-1] = ['vote'=>$vote,'teacher'=>$teacher];
         }
       }else{
         $votes = array(); 
-        array_push($votes,$vote);
+        array_push($votes,['vote'=>$vote,'teacher'=>$teacher]);
       }
       $ses->putValue($request, 'vote_records',$votes);
+      
       // print_r($ses->retrieveValue($request,'vote_records')) ;
       // saved the data to session - continue further
-      return redirect('/next');
+       return redirect('/next');
      
   }
 
@@ -87,9 +90,21 @@ class VoteController extends Controller {
    */
   public function store(Request $request)
   {
-    echo "in proress of storing response";
+    // echo "in proress of storing response";
     $ses = new SessionController;
     
+    // echo $ses->probeKey($request,'fin');
+    // echo !($ses->probeKey($request,'student_record'));
+
+    if($ses->retrieveValue($request,'student_record')== null 
+        || 
+        $ses->retrieveValue($request,'fin')!=null){
+      //  echo($ses->retrieveValue($request,'student_record'));
+        // echo($ses->retrieveValue($request,'fin'));
+        return view('/mistake',['mist'=>'You have already voted...']);
+        // abort(403, 'Unauthorized action.');
+    }
+
     $votes = $ses->retrieveValue($request,'vote_records');
     //print_r($votes);
 
@@ -103,6 +118,9 @@ class VoteController extends Controller {
       $stud = $ses->retrieveValue($request,'student_record');
       // echo ($stud);
       $stud->save();
+      // flag finished
+      $ses->putValue($request, 'fin', true);
+      // $ses->deleteKey($request, 'student_record');
       return redirect('/thanks'); 
     }else{
       return view('/mistake',['mist'=>'You have not voted...']);

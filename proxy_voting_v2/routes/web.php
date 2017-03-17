@@ -13,25 +13,29 @@
 
 use App\Teacher;
 // use Illuminate\Http\Request;
-// use App\Http\Requests;
-// use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\SessionController;
+use Illuminate\Http\Request;
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
     // $teachers = Teacher::orderBy('name','asc')->get();
+    // $request->session()->flush();
+    $ses = new SessionController;
+    $ses->refresh($request);
     return view('welcome');
 });
 
-Route::post('/newvote', ['uses' => 'VoteController@store']);
+Route::post('/newvote', ['uses' => 'VoteController@store'])->middleware('fin');
 
 Route::post('/voting', ['uses' => 'VotingController@start']);
 
-Route::get('/next', ['uses' => 'VotingController@next']);
+Route::get('/next', ['uses' => 'VotingController@next'])->middleware('fin');
 
-Route::get('/qual/{nr}',['uses'=>'QualificationController@show']);
+Route::get('/qual/{nr}',['uses'=>'QualificationController@show'])->middleware('fin');
 
-Route::post('/record',['uses'=>'VoteController@create']);
+Route::post('/record',['uses'=>'VoteController@create'])->middleware('fin');
 
-Route::get('/finish',['uses'=>'VotingController@finish']);
+Route::get('/finish',['uses'=>'VotingController@finish'])->middleware('fin');
 
 Route::post('/submit',['uses'=>'VoteController@store']);
 
