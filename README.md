@@ -1,5 +1,7 @@
 # proxy_voting
 The voting system for the FHICT teacher of the year award
+## implementation
+Built with laravel (and with love)
 ## beta location  
 Use the following link to do some beta testing  
 https://prxy-vote-test.000webhostapp.com/  
