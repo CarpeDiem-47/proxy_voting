@@ -26,7 +26,7 @@
   <header class="mdl-layout__header mdl-color--primary-dark mdl-color-text--white-800 ">
     <div class="mdl-layout-icon"></div>
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout__title">FHICTster 2017</span>
+      <!--<span class="mdl-layout__title">Teacher of 2017</span>-->
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
         <!--<a class="mdl-navigation__link" href="#">CONTINUE, I HAVE SELECTED!</a>-->
@@ -35,9 +35,12 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout__title">FHICTster 2017</span>
+    <span class="mdl-layout__title">Teacher of 2017</a></span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="#">Continue, I have selected!</a>
+      <a class="mdl-navigation__link" href="/">Restart Voting</a>
+        <a class="mdl-navigation__link" href="https://www.facebook.com/FontysProxy/" target="_blank">Our Facebook</a>
+      <a class="mdl-navigation__link" href="http://www.proxyict.com/" target="_blank">About Us</a>
+      <a class="mdl-navigation__link" href="https://fontys.edu/" target="_blank">About Fontys</a>
         <!--<a class="mdl-navigation__link" href="#">Share</a>-->
     </nav>
   </div>       
@@ -64,8 +67,11 @@
             <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--hide-phone">
             </div>
             <!--middle column-->
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-color--white mdl-shadow--4dp">
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet  mdl-color--white mdl-shadow--4dp">
                 <div class="mdl-color--accent" style="width:100%; height: 10px;">
+                </div>
+                <div class="mdl-color-text--pink-A200">
+                    @yield('extra')
                 </div>
                 <div class="mdl-typography--text-center">
                     <h2>@yield('caption')</h2>
