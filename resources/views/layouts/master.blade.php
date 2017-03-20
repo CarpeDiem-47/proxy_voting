@@ -2,6 +2,7 @@
 <html lang="{{ config('app.locale') }}">
     <head>
         <meta charset="utf-8">
+		<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,8 +39,8 @@
     <span class="mdl-layout__title">Teacher of 2017</a></span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="/">Restart Voting</a>
-        <a class="mdl-navigation__link" href="https://www.facebook.com/FontysProxy/" target="_blank">Our Facebook</a>
-      <a class="mdl-navigation__link" href="http://www.proxyict.com/" target="_blank">About Us</a>
+        <a class="mdl-navigation__link" href="https://www.facebook.com/FontysProxy/" target="_blank">Proxy Facebook</a>
+      <a class="mdl-navigation__link" href="http://www.proxyict.com/" target="_blank">About Proxy</a>
       <a class="mdl-navigation__link" href="https://fontys.edu/" target="_blank">About Fontys</a>
         <!--<a class="mdl-navigation__link" href="#">Share</a>-->
     </nav>
