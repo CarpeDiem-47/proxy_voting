@@ -2,7 +2,7 @@
 The voting system for the FHICT teacher of the year award
 ## implementation
 Built with laravel (and with love)
-## beta location  
-Use the following link to do some beta testing  
-https://prxy-vote-test.000webhostapp.com/  
+## location  
+Use the following link to vote  
+http://voteforfhict.uphero.com/
 If you find any bugs or have suggestions on improvements (on any subject), open an issue or send me an email :v:  
