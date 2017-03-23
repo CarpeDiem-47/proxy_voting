@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\QualificationController;
 use App\Qualification;
@@ -128,49 +129,90 @@ class VoteController extends Controller {
  
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function show($id)
-  {
-    
+private function selectWinner($votes, $q_id){
+  $winner = NULL;
+  foreach($votes as $v){
+    // echo $v->q_id."===".$q_id." ";
+    if($v->q_id == $q_id){
+      return $v;
+    }
   }
+  return $winner;
+}
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function edit($id)
-  {
-    
-  }
+public function showResult(){
+    $qualifications = Qualification::all();
+    $votes = array();
+    $votes = DB::select('
+        select t.name, t_id, q_id, MAX(v)
+          from 
+            (select t_id, q_id, COUNT(*) as v
+              from votes
+              group by q_id, t_id)
+          join teachers as t on t.id = t_id
+          group by q_id;
+      ');
+    foreach ($qualifications as $q){
+      $q->winner = $this->selectWinner($votes, $q->id);
+      // print_r($q->winner);
+    }
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function update($id)
-  {
     
-  }
+		
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function destroy($id)
-  {
+    // print_r($votes);
+    // echo PHP_EOL;
+    // print_r($qualifications);
+    return view('results', ['qualifications'=>$qualifications]);
+}
+
+
+  // /**
+  //  * Display the specified resource.
+  //  *
+  //  * @param  int  $id
+  //  * @return Response
+  //  */
+  // public function show($id)
+  // {
     
-  }
+  // }
+
+  // /**
+  //  * Show the form for editing the specified resource.
+  //  *
+  //  * @param  int  $id
+  //  * @return Response
+  //  */
+  // public function edit($id)
+  // {
+    
+  // }
+
+  // /**
+  //  * Update the specified resource in storage.
+  //  *
+  //  * @param  int  $id
+  //  * @return Response
+  //  */
+  // public function update($id)
+  // {
+    
+  // }
+
+  // /**
+  //  * Remove the specified resource from storage.
+  //  *
+  //  * @param  int  $id
+  //  * @return Response
+  //  */
+  // public function destroy($id)
+  // {
+    
+  // }
+
+
+
   
 }
 

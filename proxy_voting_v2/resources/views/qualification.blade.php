@@ -19,3 +19,4 @@
 @endsection
 
 @include('func.f_qual')
+@include('sizeconfig.smallmain')

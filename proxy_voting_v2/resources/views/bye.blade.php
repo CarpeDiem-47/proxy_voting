@@ -14,3 +14,4 @@
 @endsection
 
 @include('func.f_bye')
+@include('sizeconfig.smallmain')
