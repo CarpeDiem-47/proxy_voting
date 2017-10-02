@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Qualification extends Model {
@@ -11,7 +12,6 @@ class Qualification extends Model {
 
 	public function getVotes()
 	{
-		return $this->hasMany('Vote', 'q_id');
+		return $this->hasMany('App\Vote', 'q_id');
 	}
-
 }

@@ -11,3 +11,5 @@
     <!--2017-->
     <!--The winner is to be announced at the P-Certificate ceremony-->
 @endsection
+
+@include('sizeconfig.smallmain')

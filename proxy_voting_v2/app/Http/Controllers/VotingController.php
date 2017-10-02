@@ -17,8 +17,8 @@ class VotingController extends Controller
     public function start(Request $request)
     {
         $this->validate($request, [
-            'student_number' => 'required|unique:votes,s_nr|unique:students,studentNr|max:7|min:7',
             'student_email' => 'required|unique:students,studentEmail|email|',
+            'student_number' => 'required|unique:votes,s_nr|integer|digits:7|exists:validations,stud_nr|between:2038109,3270548|unique:students,studentNr',
         ]); // does implicitly redirect back if fails
         // add the regex to check fontys email
         // TODO: check studnr validity

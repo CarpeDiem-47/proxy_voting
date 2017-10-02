@@ -13,7 +13,7 @@
         <div class="mdl-textfield mdl-js-textfield">
             {!!  Form::email('student_email', '', $attributes =  ['class' => 'mdl-textfield__input', 'id'=>'sample1']) !!}
             <!--{!! Form::text('text', '', ['class' => 'mdl-textfield__input', 'id'=>'sample1']) !!}-->
-            <label class="mdl-textfield__label" for="sample1">Fontys E-mail...</label>
+            <label class="mdl-textfield__label" for="sample1">Your E-mail...</label>
         </div> 
         <br/> 
 
@@ -24,7 +24,7 @@
 
         <div class="mdl-textfield mdl-js-textfield">
             {!! Form::text('student_number', '', ['class' => 'mdl-textfield__input', 'id'=>'sample2','pattern'=>'-?[0-9]*(\.[0-9]+)?']) !!}
-            <label class="mdl-textfield__label" for="sample2">Student Number...</label>
+            <label class="mdl-textfield__label" for="sample2">Your Student Number...</label>
             <span class="mdl-textfield__error">Not a number!</span>
         </div>
         <br/>

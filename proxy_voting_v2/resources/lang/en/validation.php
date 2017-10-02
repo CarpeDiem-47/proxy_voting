@@ -24,7 +24,7 @@ return [
     'before'               => 'The :attribute must be a date before :date.',
     'before_or_equal'      => 'The :attribute must be a date before or equal to :date.',
     'between'              => [
-        'numeric' => 'The :attribute must be between :min and :max.',
+        'numeric' => 'The :attribute is out of range.', // tweaked from The :attribute must be between :min and :max
         'file'    => 'The :attribute must be between :min and :max kilobytes.',
         'string'  => 'The :attribute must be between :min and :max characters.',
         'array'   => 'The :attribute must have between :min and :max items.',
@@ -114,6 +114,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'between' => [
+                'numeric' => 'The :attribute is out of range.',
+        ],
+    ],
 
 ];

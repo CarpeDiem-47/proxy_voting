@@ -42,3 +42,6 @@ Route::post('/submit',['uses'=>'VoteController@store']);
 Route::get('/thanks', function(){
     return view('bye');
 });
+
+
+Route::get('/results',['uses'=>'VoteController@showResult']);

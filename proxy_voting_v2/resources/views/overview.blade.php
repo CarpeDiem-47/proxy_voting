@@ -13,3 +13,4 @@
 @endsection
 
 @include('func.f_overview')
+@include('sizeconfig.smallmain')
