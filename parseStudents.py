@@ -62,13 +62,13 @@ class Parser:
 
     def run(self):
         #self.printRows()
-        #self.getPCNs()
-        #self.getStudNrs()
+        self.getPCNs()
+        self.getStudNrs()
         self.getMaxMinStudNr()
 
 
 prsr = Parser()
-# prsr.run()
+prsr.run()
 # prsr.getPCNsForSeed()
-prsr.getStudNrsForSeed()
+# prsr.getStudNrsForSeed()
 
