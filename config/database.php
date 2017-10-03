@@ -106,7 +106,7 @@ return [
 
         'default' => [
             'host' => env('REDIS_HOST', 'ec2-54-227-223-104.compute-1.amazonaws.com'),
-            'password' => env('REDIS_PASSWORD', pf96446dcd04da2956fc11180f93aed388f8b90fde23f9689c012270998bc638b),
+            'password' => env('REDIS_PASSWORD', 'pf96446dcd04da2956fc11180f93aed388f8b90fde23f9689c012270998bc638b'),
             'port' => env('REDIS_PORT', 30859),
             'database' => 0,
         ],
