@@ -85,7 +85,7 @@ class DatabaseSeeder extends Seeder
 
         for($i=0; $i<count($teachernames); $i++)
         {
-            DB::table('teachers')->insert([
+            DB::table('Teachers')->insert([
                 'name' => $teachernames[$i],
                 'link' => $teacherlinks[$i],
                 'picture'=> 'nil'
@@ -93,12 +93,12 @@ class DatabaseSeeder extends Seeder
         }
         
         // to be updated
-        DB::table('qualifications')->insert([
+        DB::table('Qualifications')->insert([
                 'title' => 'Best Teacher 2017',
                 'description' => 'Who do you find the best teacher of this year?',
             ]);
         // to be updated
-        DB::table('qualifications')->insert([
+        DB::table('Qualifications')->insert([
                 'title' => 'FHICTster 2017',
                 'description' => 'Choose the coolest teacher of the year!',
             ]);
