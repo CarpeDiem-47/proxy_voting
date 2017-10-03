@@ -14,7 +14,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('Votes', function(Blueprint $table) {
-			$table->foreign('s_id')->references('id')->on('Students')
+			$table->foreign('s_nr')->references('id')->on('Students')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
