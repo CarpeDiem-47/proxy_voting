@@ -6,7 +6,7 @@ if (getenv('REDIS_URL')) {
     
     putenv('DB_HOST='.$dbUrl["host"]);
     putenv('DB_PORT='.$dbUrl["port"]);
-    putenv('DB_DATABASE='.$dbUrl["path"]);
+    putenv('DB_DATABASE='.substr($dbUrl["path"],1));
     putenv('DB_USERNAME='.$dbUrl["user"]);
     putenv('DB_PASSWORD='.$dbUrl["pass"]);
 
