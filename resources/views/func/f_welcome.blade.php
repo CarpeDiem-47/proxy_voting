@@ -36,5 +36,6 @@
         @endif
    {!! Form::submit('Proceed',["class"=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"]); !!}
 {!! Form::close() !!}
+<p>*: we use emails and student numbers only for verification, the votes remain anonymous :)</p>
 </div>
 @endsection
