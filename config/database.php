@@ -2,6 +2,14 @@
 
 if (getenv('REDIS_URL')) {
     $url = parse_url(getenv('REDIS_URL'));
+    $dbUrl = parse_url(env("DATABASE_URL"));
+    
+    putenv('DB_HOST='.$dbUrl["host"]);
+    putenv('DB_PORT='.$dbUrl["port"]);
+    putenv('DB_DATABASE='.substr($dbUrl["path"],1));
+    putenv('DB_USERNAME='.$dbUrl["user"]);
+    putenv('DB_PASSWORD='.$dbUrl["pass"]);
+
 
     putenv('REDIS_HOST='.$url['host']);
     putenv('REDIS_PORT='.$url['port']);
@@ -63,11 +71,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'ec2-184-72-223-199.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'd8djnb7rv3e95o'),
+            'username' => env('DB_USERNAME', 'ztemnkbghcusyl'),
+            'password' => env('DB_PASSWORD', '2eadd961bec4d0045b0694a2e5b2864014d9e06c4549a7db42127902c9090988'),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
@@ -105,9 +113,9 @@ return [
         'client' => 'predis',
 
         'default' => [
-            'host' => env('REDIS_HOST', 'ec2-54-227-223-104.compute-1.amazonaws.com'),
-            'password' => env('REDIS_PASSWORD', 'pf96446dcd04da2956fc11180f93aed388f8b90fde23f9689c012270998bc638b'),
-            'port' => env('REDIS_PORT', 30859),
+            'host' => env('REDIS_HOST', 'ec2-34-235-35-224.compute-1.amazonaws.com'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6829),
             'database' => 0,
         ],
 
