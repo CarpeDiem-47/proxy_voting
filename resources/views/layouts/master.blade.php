@@ -41,8 +41,9 @@
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="/">Restart Voting</a>
         <a class="mdl-navigation__link" href="https://www.facebook.com/FontysProxy/" target="_blank">Proxy Facebook</a>
-      <a class="mdl-navigation__link" href="http://www.proxyict.com/" target="_blank">About Proxy</a>
+      <a class="mdl-navigation__link" href="http://www.proxyict.com/" target="_blank">Proxy Website</a>
       <a class="mdl-navigation__link" href="https://fontys.edu/" target="_blank">About Fontys</a>
+      <a class="mdl-navigation__link" href="https://github.com/dee-me-tree-or-love/proxy_voting/issues" target="_blank">Found a bug?</a>
         <!--<a class="mdl-navigation__link" href="#">Share</a>-->
     </nav>
   </div>       
