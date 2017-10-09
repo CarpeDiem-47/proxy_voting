@@ -147,12 +147,12 @@ public function showResult(){
     $qualifications = Qualification::all();
     $votes = array();
     $votes = DB::select('
-        select t.name, t_id, q_id, MAX(v)
+        select t.name, ctr.t_id, ctr.q_id, MAX(v)
           from 
             (select t_id, q_id, COUNT(*) as v
               from votes
-              group by q_id, t_id)
-          join teachers as t on t.id = t_id
+              group by q_id, t_id) as ctr
+          join teachers as t on t.id = ctr.t_id
           group by q_id;
       ');
     foreach ($qualifications as $q){
