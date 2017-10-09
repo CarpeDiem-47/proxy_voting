@@ -11,8 +11,10 @@
             </ul>
             </summary>
             <div class="content mdl-typography--text-center">
-                <h2>{{$qual->winner->name}}</h2>   
-                <h6>-- {{$qual->description}} --</h6>
+                @foreach ($qual->winner as $cand)
+                    <h2>{{$cand->name}}</h2>   
+                    <h6>-- {{$qual->description}} --</h6>
+                @endforeach
             </div>
         </details>
     @endforeach

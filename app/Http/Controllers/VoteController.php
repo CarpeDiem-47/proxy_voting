@@ -133,14 +133,18 @@ class VoteController extends Controller {
   }
 
 private function selectWinner($votes, $q_id){
-  $winner = NULL;
+  $winner = [];
   $max = 0;
   foreach($votes as $v){
     // echo $v->q_id."===".$q_id." ";
-    if($v->q_id == $q_id && $v->score>=$max){
-      
-      $winner = $v;
-      $max = $v->score;
+    if($v->q_id == $q_id) { 
+      if($v->score>=$max){
+        if($v->score>$max){
+          $winner = [];
+        }
+        $winner[] = $v;
+        $max = $v->score;
+      }
     }
   }
   return $winner;
