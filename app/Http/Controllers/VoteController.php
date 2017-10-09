@@ -134,10 +134,13 @@ class VoteController extends Controller {
 
 private function selectWinner($votes, $q_id){
   $winner = NULL;
+  $max = 0;
   foreach($votes as $v){
     // echo $v->q_id."===".$q_id." ";
-    if($v->q_id == $q_id){
-      return $v;
+    if($v->q_id == $q_id && $v->score>=$max){
+      
+      $winner = $v;
+      $max = $v->score;
     }
   }
   return $winner;
@@ -147,14 +150,14 @@ public function showResult(){
     $qualifications = Qualification::all();
     $votes = array();
     $votes = DB::select('
-        select t.name, ctr.t_id, ctr.q_id, MAX(v)
-          from 
-            (select t_id, q_id, COUNT(*) as v
-              from public.Votes
-              group by q_id, t_id) as ctr
-          join public.Teachers as t on t.id = ctr.t_id
-          group by q_id;
-      ');
+      select t.name, ctr.t_id, ctr.q_id, MAX(v)as score
+      from 
+        (select t_id, q_id, COUNT(*) as v
+          from public."Votes"
+          group by q_id, t_id) as ctr
+      join public."Teachers" as t on t.id = ctr.t_id
+      group by t.name, ctr.t_id, ctr.q_id;
+    ');
     foreach ($qualifications as $q){
       $q->winner = $this->selectWinner($votes, $q->id);
       // print_r($q->winner);
