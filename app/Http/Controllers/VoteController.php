@@ -150,9 +150,9 @@ public function showResult(){
         select t.name, ctr.t_id, ctr.q_id, MAX(v)
           from 
             (select t_id, q_id, COUNT(*) as v
-              from Votes
+              from public.Votes
               group by q_id, t_id) as ctr
-          join Teachers as t on t.id = ctr.t_id
+          join public.Teachers as t on t.id = ctr.t_id
           group by q_id;
       ');
     foreach ($qualifications as $q){
