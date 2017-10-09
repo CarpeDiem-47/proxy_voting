@@ -150,11 +150,11 @@ public function showResult(){
         select t.name, ctr.t_id, ctr.q_id, MAX(v)
           from 
             (select t_id, q_id, COUNT(*) as v
-              from votes
+              from Votes
               group by q_id, t_id) as ctr
-          join teachers as t on t.id = ctr.t_id
+          join Teachers as t on t.id = ctr.t_id
           group by q_id;
-      ');
+      ');пше 
     foreach ($qualifications as $q){
       $q->winner = $this->selectWinner($votes, $q->id);
       // print_r($q->winner);
