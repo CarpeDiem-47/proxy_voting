@@ -11,7 +11,7 @@
         <!--<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
-        <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
+        <link href="{{ secure_asset('css/custom.css') }}" rel="stylesheet" />
 
         <!-- Material Design Light -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
